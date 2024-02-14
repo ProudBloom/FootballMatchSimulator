@@ -1,9 +1,10 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import SimulationCard from '@/components/simulation-card/SimulationCard';
+import { useSimulationContext } from '@/hooks/useSimulationContext';
 
 export default function Home() {
+  const { matches } = useSimulationContext();
+
   return (
     <>
       <Head>
@@ -13,7 +14,9 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <span className='text-red-500 underline'>Hello!</span>
+        <section className='flex h-[100vh] justify-center items-center'>
+          {matches ? <SimulationCard matchesData={matches} /> : <span>Loading Data...</span>}
+        </section>
       </main>
     </>
   );
