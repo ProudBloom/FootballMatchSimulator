@@ -1,7 +1,5 @@
 import Head from 'next/head';
-import { Inter } from 'next/font/google';
-
-const inter = Inter({ subsets: ['latin'] });
+import SimulationCard from '@/components/simulation-card/SimulationCard';
 
 export default function Home() {
   return (
@@ -13,7 +11,9 @@ export default function Home() {
         <link rel='icon' href='/favicon.ico' />
       </Head>
       <main>
-        <span className='text-red-500 underline'>Hello!</span>
+        <section className='flex h-[100vh] justify-center items-center'>
+          <SimulationCard />
+        </section>
       </main>
     </>
   );
