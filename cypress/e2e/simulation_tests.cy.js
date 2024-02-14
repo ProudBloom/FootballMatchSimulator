@@ -3,7 +3,11 @@ describe('Simulation tests', () => {
     cy.visit('http://localhost:3000');
   });
 
-  test('Simulation uninterrupted test', () => {
+  afterEach(() => {
+    cleanup();
+  });
+
+  it('Simulation uninterrupted test', () => {
     cy.get('[data-testid="startSimulationButton"]').should('be.visible');
     cy.get('[data-testid="totalGoalsElement"]').should('have.value', '0');
 
@@ -16,7 +20,7 @@ describe('Simulation tests', () => {
     cy.get('[data-testid="totalGoalsElement"]').should('have.value', '9');
   });
 
-  test('Simulation interrupted after 45s test', () => {
+  it('Simulation interrupted after 45s test', () => {
     cy.get('[data-testid="startSimulationButton"]').should('be.visible');
     cy.get('[data-testid="totalGoalsElement"]').should('have.value', '0');
 
@@ -30,7 +34,7 @@ describe('Simulation tests', () => {
     cy.get('[data-testid="totalGoalsElement"]').should('have.value', '4');
   });
 
-  test('Monitor goals scored every 10 seconds', () => {
+  it('Monitor goals scored every 10 seconds', () => {
     cy.get('[data-testid="totalGoalsElement"]').should('have.value', '0');
 
     for (let i = 0; i < 9; i++) {
