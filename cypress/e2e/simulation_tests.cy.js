@@ -3,10 +3,6 @@ describe('Simulation tests', () => {
     cy.visit('http://localhost:3000');
   });
 
-  afterEach(() => {
-    cleanup();
-  });
-
   it('Simulation uninterrupted test', () => {
     cy.get('[data-testid="startSimulationButton"]').should('be.visible');
     cy.get('[data-testid="totalGoalsElement"]').should('have.value', '0');

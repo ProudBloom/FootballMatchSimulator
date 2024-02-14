@@ -5,9 +5,9 @@ const TotalGoals = () => {
   const { totalGoals } = useSimulationContext();
 
   return (
-    <div data-testid='totalGoalsElement'>
+    <div>
       <span className='me-2'>Total goals:</span>
-      <span>{totalGoals}</span>
+      <span data-testid='totalGoalsElement'>{totalGoals}</span>
     </div>
   );
 };

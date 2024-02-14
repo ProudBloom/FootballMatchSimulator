@@ -14,7 +14,7 @@ export const SimulationContextProvider = ({ children }: SimulationContextProvide
   const [time, setTime] = useState(0);
   const [isRunning, setIsRunning] = useState(false);
   const [simulationName, setSimulationName] = useState('');
-  const [matches, setMatches] = useState(initialMatches);
+  const [matches, setMatches] = useState([...initialMatches]); // Spread to ensure a new reference
   const [totalGoals, setTotalGoals] = useState(0);
 
   useEffect(() => {
@@ -29,9 +29,12 @@ export const SimulationContextProvider = ({ children }: SimulationContextProvide
         setTime((prevTime) => {
           const currentTime = prevTime + 1;
           if (currentTime <= SIMULATION_TIME) {
-            if (currentTime % 10 === 0) {
+            if (currentTime % 2 === 0) {
               setMatches((currentMatches) => {
-                const updatedMatches = [...currentMatches];
+                const updatedMatches = currentMatches.map((match) => ({
+                  ...match,
+                  scores: [...match.scores],
+                }));
                 const matchIndex = Math.floor(Math.random() * updatedMatches.length);
                 const teamIndex = Math.floor(Math.random() * 2);
 
@@ -48,6 +51,7 @@ export const SimulationContextProvider = ({ children }: SimulationContextProvide
           } else {
             clearInterval(interval);
             setIsRunning(false);
+            return prevTime;
           }
         });
       }, 1000);
@@ -63,7 +67,7 @@ export const SimulationContextProvider = ({ children }: SimulationContextProvide
   };
 
   const stopSimulation = () => {
-    if (isRunning && time < SIMULATION_TIME) {
+    if (isRunning) {
       setIsRunning(false);
     }
   };
