@@ -1,5 +1,5 @@
 import React from 'react';
-import SimulationName from '../simulationName/SimulationName';
+import SimulationName from '../simulation-name/SimulationName';
 import Match from '../match/Match';
 import Button from '../button/Button';
 import TotalGoals from '../total-goals/TotalGoals';
