@@ -5,4 +5,5 @@ export interface IButtonProps extends PropsWithChildren {
   onClick?: () => void | Promise<void>;
   type?: 'button' | 'submit';
   disabled?: boolean;
+  testID: string;
 }

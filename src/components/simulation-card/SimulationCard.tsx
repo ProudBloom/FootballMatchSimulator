@@ -1,22 +1,35 @@
-import React, { useEffect, useState } from 'react';
 import SimulationName from '../simulation-name/SimulationName';
 import Match from '../match/Match';
 import Button from '../button/Button';
 import TotalGoals from '../total-goals/TotalGoals';
 import { useSimulationContext } from '@/hooks/useSimulationContext';
 import { SIMULATION_TIME } from '@/Globals.constants';
+import { SimulationCardProps } from './SimulationCard.types';
+import { useEffect } from 'react';
 
-const SimulationCard = () => {
+const SimulationCard = ({ matchesData }: SimulationCardProps) => {
   const { simulationName, isRunning, time, startSimulation, stopSimulation, resetSimulation } =
     useSimulationContext();
 
   const renderButton = () => {
     if (time === 0) {
-      return <Button onClick={startSimulation}>Start</Button>;
+      return (
+        <Button testID='startSimulationButton' onClick={startSimulation}>
+          Start
+        </Button>
+      );
     } else if (time > 0 && time <= SIMULATION_TIME && isRunning) {
-      return <Button onClick={stopSimulation}>Finish</Button>;
+      return (
+        <Button testID='endSimulationButton' onClick={stopSimulation}>
+          Finish
+        </Button>
+      );
     } else {
-      return <Button onClick={resetSimulation}>Restart</Button>;
+      return (
+        <Button testID='restartSimulationButton' onClick={resetSimulation}>
+          Restart
+        </Button>
+      );
     }
   };
 
@@ -27,19 +40,15 @@ const SimulationCard = () => {
       </section>
 
       <section>{renderButton()}</section>
-      {/* TODO: delete this part*/}
-      <div>time: {time}</div>
 
       <section className='w-full'>
-        <div className='my-2'>
-          <Match />
-        </div>
-        <div className='my-2'>
-          <Match />
-        </div>
-        <div className='my-2'>
-          <Match />
-        </div>
+        {matchesData.map((matchData) => {
+          return (
+            <div key={matchData.id} className='my-2'>
+              <Match matchData={matchData} />
+            </div>
+          );
+        })}
       </section>
 
       <section className='text-sm text-end'>

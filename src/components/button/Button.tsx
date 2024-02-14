@@ -1,9 +1,15 @@
 import React from 'react';
 import { IButtonProps } from './Button.types';
 
-const Button = ({ onClick, children }: IButtonProps) => {
+const Button = ({ disabled, type, testID, onClick, children }: IButtonProps) => {
   return (
-    <button onClick={onClick} className='px-10 py-1 my-2 border border-black rounded'>
+    <button
+      data-testid={testID}
+      onClick={onClick}
+      className='px-10 py-1 my-2 border border-black rounded'
+      type={type}
+      disabled={disabled}
+    >
       {children}
     </button>
   );

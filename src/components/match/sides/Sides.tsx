@@ -1,11 +1,12 @@
 import React from 'react';
+import { SidesProps } from './Sides.types';
 
-const Sides = () => {
+const Sides = ({ sidesData }: SidesProps) => {
   return (
     <div>
-      Side
+      {sidesData[0]}
       <span> vs </span>
-      Side
+      {sidesData[1]}
     </div>
   );
 };

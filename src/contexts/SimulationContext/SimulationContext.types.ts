@@ -1,3 +1,4 @@
+import { MatchData } from '@/components/match/Match.types';
 import { ReactNode } from 'react';
 
 export type SimulationState = {
@@ -7,6 +8,8 @@ export type SimulationState = {
   time: number;
   isRunning: boolean;
   simulationName: string;
+  matches: MatchData[];
+  totalGoals: number;
 };
 
 export type SimulationContextProviderProps = {

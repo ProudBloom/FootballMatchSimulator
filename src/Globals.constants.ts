@@ -1,4 +1,4 @@
-export const SIMULATION_TIME: number = 10;
+export const SIMULATION_TIME: number = 90;
 export const SIMULATION_NAMES: string[] = [
   'Switzerland 1954',
   'Sweden 1958',

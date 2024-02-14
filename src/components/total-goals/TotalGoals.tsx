@@ -1,10 +1,13 @@
+import { useSimulationContext } from '@/hooks/useSimulationContext';
 import React from 'react';
 
 const TotalGoals = () => {
+  const { totalGoals } = useSimulationContext();
+
   return (
-    <div>
+    <div data-testid='totalGoalsElement'>
       <span className='me-2'>Total goals:</span>
-      <span>0</span>
+      <span>{totalGoals}</span>
     </div>
   );
 };

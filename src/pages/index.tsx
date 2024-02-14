@@ -1,7 +1,10 @@
 import Head from 'next/head';
 import SimulationCard from '@/components/simulation-card/SimulationCard';
+import { useSimulationContext } from '@/hooks/useSimulationContext';
 
 export default function Home() {
+  const { matches } = useSimulationContext();
+
   return (
     <>
       <Head>
@@ -12,7 +15,7 @@ export default function Home() {
       </Head>
       <main>
         <section className='flex h-[100vh] justify-center items-center'>
-          <SimulationCard />
+          {matches ? <SimulationCard matchesData={matches} /> : <span>Loading Data...</span>}
         </section>
       </main>
     </>

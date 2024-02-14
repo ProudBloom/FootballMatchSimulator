@@ -1,11 +1,12 @@
 import React from 'react';
+import { ScoresProps } from './Scores.types';
 
-const Scores = () => {
+const Scores = ({ scoresData, testID }: ScoresProps) => {
   return (
-    <div>
-      <span>0</span>
+    <div data-testid={testID}>
+      <span>{scoresData[0]}</span>
       <span>:</span>
-      <span>0</span>
+      <span>{scoresData[1]}</span>
     </div>
   );
 };
