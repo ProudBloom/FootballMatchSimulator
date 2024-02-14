@@ -1,7 +1,12 @@
 import React from 'react';
+import { IButtonProps } from './Button.types';
 
-const Button = () => {
-  return <button className='my-2 px-10 py-1 rounded border border-black'>Button</button>;
+const Button = ({ onClick, children }: IButtonProps) => {
+  return (
+    <button onClick={onClick} className='px-10 py-1 my-2 border border-black rounded'>
+      {children}
+    </button>
+  );
 };
 
 export default Button;

@@ -5,6 +5,8 @@ export type SimulationState = {
   resetSimulation: () => void;
   stopSimulation: () => void;
   time: number;
+  isRunning: boolean;
+  simulationName: string;
 };
 
 export type SimulationContextProviderProps = {
